@@ -6,6 +6,8 @@ const API = axios.create({
 
 export const ytAPI = {
   getChannel: (identifier) => API.get(`/channel/${encodeURIComponent(identifier)}`),
+  getRecentVideos: (identifier) => API.get(`/channel/${encodeURIComponent(identifier)}/recent`),
+  getVideosByDateRange: (identifier, from, to) => API.get(`/channel/${encodeURIComponent(identifier)}/videos/date-range?from=${from}&to=${to}`),
   getVideosBatch: (videoIds) => API.post('/videos/batch', { video_ids: videoIds }),
   analyzeTiming: (videos) => API.post('/analysis/timing', { videos }),
   analyzeDuration: (videos) => API.post('/analysis/duration', { videos }),

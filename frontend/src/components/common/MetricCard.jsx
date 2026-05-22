@@ -1,32 +1,54 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { cn } from '../../utils/utils';
+import React, { useEffect, useRef } from 'react';
+import { motion, animate } from 'framer-motion';
 
-export function MetricCard({ title, value, change, icon: Icon, trend }) {
-  const isPositive = trend === 'up';
+function AnimatedCounter({ value }) {
+  const nodeRef = useRef();
+  
+  useEffect(() => {
+    const node = nodeRef.current;
+    if (!node) return;
+    
+    // Extract numbers, ignore commas
+    const numStr = value.replace(/,/g, '');
+    const num = parseFloat(numStr);
+    
+    if (isNaN(num)) {
+      node.textContent = value;
+      return;
+    }
+    
+    const controls = animate(0, num, {
+      duration: 1.5,
+      ease: "easeOut",
+      onUpdate(v) {
+        node.textContent = Math.round(v).toLocaleString();
+      }
+    });
+    
+    return () => controls.stop();
+  }, [value]);
+  
+  return <span ref={nodeRef}>{value}</span>;
+}
+
+export function MetricCard({ title, value, icon: Icon, trend }) {
+  const isUp = trend === 'up';
   
   return (
     <motion.div 
-      whileHover={{ y: -4, boxShadow: '0 20px 25px -5px rgb(0 0 0 / 0.1)' }}
-      className="glass-panel p-6 flex flex-col gap-4 transition-shadow"
+      whileHover={{ y: -4 }}
+      className="glass-card p-6"
     >
-      <div className="flex justify-between items-center">
-        <p className="text-sm font-medium text-slate-500">{title}</p>
-        <div className="p-2 bg-blue-50/50 rounded-lg">
-          <Icon className="w-5 h-5 text-blue-600" />
+      <div className="flex items-start justify-between">
+        <div>
+          <p className="text-sm font-medium text-slate-500 mb-2">{title}</p>
+          <h3 className="text-3xl font-bold text-slate-900">
+            {typeof value === 'string' && value.includes(',') ? <AnimatedCounter value={value} /> : value}
+          </h3>
         </div>
-      </div>
-      
-      <div>
-        <h3 className="text-3xl font-bold text-slate-900">{value}</h3>
-        {change && (
-          <p className={cn(
-            "text-sm font-medium mt-1",
-            isPositive ? "text-emerald-600" : "text-rose-600"
-          )}>
-            {isPositive ? '+' : '-'}{change}
-          </p>
-        )}
+        <div className={`p-3 rounded-xl ${isUp ? 'bg-blue-50 text-blue-600' : 'bg-slate-100 text-slate-400'}`}>
+          <Icon className="w-6 h-6" />
+        </div>
       </div>
     </motion.div>
   );

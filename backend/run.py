@@ -6,6 +6,7 @@ load_dotenv()
 
 # Validate API keys
 youtube_key = os.getenv('YOUTUBE_API_KEY')
+print("YOUTUBE KEY:",youtube_key)
 gemini_key = os.getenv('GEMINI_API_KEY')
 
 if not youtube_key or youtube_key == 'your_youtube_api_key_here':
