@@ -53,7 +53,7 @@
 ### AI Insights Section
 > *(Placeholder: Add a screenshot of the Gemini AI generated insights here)*
 >
-![AI Insights](/assets/AI Insights-1.png)
+![AI Insights](/assets/AI-Insights-1.png)
 
 ---
 
