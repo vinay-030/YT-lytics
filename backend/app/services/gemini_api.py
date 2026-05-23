@@ -11,8 +11,8 @@ class GeminiService:
     @staticmethod
     def get_recommendations(channel_context):
         setup_gemini()
-        # uses Gemini 1.5 Pro
-        model = genai.GenerativeModel('gemini-1.5-pro')
+        # uses Gemini 1.5 Flash
+        model = genai.GenerativeModel("models/gemini-2.5-flash")
         prompt = f"""
         Act as an elite YouTube Strategist. Based on the following channel data, generate a highly structured strategic report using Markdown.
         
@@ -34,7 +34,7 @@ class GeminiService:
     def chat(messages):
         setup_gemini()
         # uses Gemini 1.5 Flash
-        model = genai.GenerativeModel('gemini-1.5-flash')
+        model = genai.GenerativeModel('gemini-2.5-flash')
         # format messages appropriately
         prompt = messages[-1].get('content', '') if messages else ''
         response = model.generate_content(prompt)
