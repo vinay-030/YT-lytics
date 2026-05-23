@@ -23,25 +23,37 @@
 
 ## 📸 Screenshots
 
+### Logo
+>
+> `![Logo](assets/Logo.png)`
+
 ### Overview Page
 > *(Placeholder: Add a screenshot of the general overview page here)*
 >
-> `![Overview](/assets/overview.png)`
+> `![Overview](assets/Overview.png)`
 
 ### Dashboard Analytics
 > *(Placeholder: Add a screenshot of the main dashboard here)*
 >
-> `![Dashboard](/assets/dashboard.png)`
+> `![Dashboard](assets/Dashboard-1.png)`
+> `![Dashboard](assets/Dashboard-2.png)`
+> `![Dashboard](assets/Dashboard-3.png)`
 
 ### Compare Section
 > *(Placeholder: Add a screenshot of the channel comparison feature here)*
 >
-> `![Compare Section](/assets/compare.png)`
+> `![Compare Section](assets/Compare-1.png)`
+> `![Compare Section](assets/Compare-2.png)`
+
+### Analysis
+>
+> `![Analysis](assets/Analysis-1.png)`
+> `![Analysis](assets/Analysis-2.png)`
 
 ### AI Insights Section
 > *(Placeholder: Add a screenshot of the Gemini AI generated insights here)*
 >
-> `![AI Insights](/assets/ai-insights.png)`
+> `![AI Insights](/assets/AI Insights-1.png)`
 
 ---
 
